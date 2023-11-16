@@ -1,22 +1,22 @@
-import { useState } from 'react'
-import './App.css'
+import {useDispatch, useSelector} from 'react-redux'
+import { decrement, increment, incrementByAmount } from './store/slices/counter'
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+  
+  const { counter } = useSelector(state=>state.counter);
+  const dispatch = useDispatch();
 
   return (
     <>
-      
-      <h1>Vite + React</h1>
+      <h1>Count is {counter}</h1>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        
+        <button onClick={() => dispatch(increment())}>Increment</button>
+        <button onClick={() => dispatch(decrement())}>Decrement</button>
+        <button onClick={() => dispatch(incrementByAmount(2))}>Increment by 2</button>
       </div>
-      
     </>
-  )
+  );
 }
 
 export default App
