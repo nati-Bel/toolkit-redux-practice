@@ -3,7 +3,7 @@ import { setPokemons, startLoadingPokemons } from "./pokemonSlice"
 
 
 export const getPokemons = ( page = 0 ) => {
-    return async ( dispatch, getState ) => {
+    return async ( dispatch ) => {
         dispatch ( startLoadingPokemons() );
 
         // TODO http request
